@@ -11,12 +11,26 @@
   become: yes
   shell: dnf groupupdate sound-and-video -y
 
+- name: "Check if KDE Plasma is installed"
+  package_facts:
+    manager: "auto"
+
+- name: Add kup repo if KDE Plasma is installed
+  become: yes
+  get_url:
+    url: https://download.opensuse.org/repositories/home:/simper:/kup/Fedora_Rawhide/home:simper:kup.repo
+    dest: /etc/yum.repos.d/
+  when: "'plasma-desktop' in ansible_facts.packages"
+
+- name: Attempt to install kup
+  become: yes
+  dnf:
+    name: kup.x86_64
+    state: present
+  ignore_errors: yes 
+
 - name: Install DNF packages
   become: yes
   dnf:
-    name:
-      - firefox
-      - "*-firmware"
-      - libdvdcss
-      - neovim
+    name: "{{ dnf_package }}"
     state: present

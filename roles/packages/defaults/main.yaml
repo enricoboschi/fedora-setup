@@ -1,6 +1,42 @@
 ---
-dnfpackages:
-  - firefox
+dnf_package:
+  - akmod-nvidia
+  - alien
+  - atool
+  - beets
+  - beets-doc
+  - beets-plugins
+  - bleachbit
+  - clamav
+  - clamav-unofficial-sigs
+  - codium
+  - elisa-player
+  - ffmpeg
   - "*-firmware"
+  - java-latest-openjdk
+  - java-latest-openjdk-devel
+  - java-latest-openjdk-javadoc
+  - java-latest-openjdk-src
+  - kate 
   - libdvdcss
+  - libreoffice
+  - langpacks-en
+  - langpacks-it
+  - lutris
+  - mpv
+  - neofetch
   - neovim
+  - nmap
+  - python3
+  - qbittorrent
+  - qemu
+  - speedtest-cli
+  - steam
+  - telegram-desktop
+  - texlive-scheme-basic
+  - unrar
+  - wine
+  - winetricks
+  - youtube-dl
+  - zsh
+  - zsh-syntax-highlighting

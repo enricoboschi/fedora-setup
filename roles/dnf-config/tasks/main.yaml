@@ -6,7 +6,7 @@
     line: "{{ item.0 }}"
     regexp: "{{ item.1 }}"
     state: present
-  loop: "{{ dnfconf|zip(dnfconfregexp)|list }}"
+  loop: "{{ dnf_conf|zip(dnf_conf_regexp)|list }}"
 
 - name: Add RPM Fusion free repo
   become: yes
