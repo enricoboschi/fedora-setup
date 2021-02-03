@@ -1,0 +1,10 @@
+---
+dnfconf:
+  - fastestmirror=true
+  - max_parallel_downloads=15
+  - deltarpm=false
+
+dnfconfregexp:
+  - '^fastestmirror='
+  - '^max_parallel_downloads='
+  - '^deltarpm='

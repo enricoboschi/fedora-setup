@@ -1,0 +1,6 @@
+---
+dnfpackages:
+  - firefox
+  - "*-firmware"
+  - libdvdcss
+  - neovim

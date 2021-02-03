@@ -1,0 +1,22 @@
+---
+- name: Install Appstream metadata
+  become: yes
+  shell: dnf groupupdate core -y
+
+- name: Install multimedia packages
+  become: yes
+  shell: dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -y
+
+- name: Install sound-and-video complement packages
+  become: yes
+  shell: dnf groupupdate sound-and-video -y
+
+- name: Install DNF packages
+  become: yes
+  dnf:
+    name:
+      - firefox
+      - "*-firmware"
+      - libdvdcss
+      - neovim
+    state: present

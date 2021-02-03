@@ -1,0 +1,43 @@
+---
+- name: Edit dnf.conf
+  become: yes
+  lineinfile:
+    path: /etc/dnf/dnf.conf
+    line: "{{ item.0 }}"
+    regexp: "{{ item.1 }}"
+    state: present
+  loop: "{{ dnfconf|zip(dnfconfregexp)|list }}"
+
+- name: Add RPM Fusion free repo
+  become: yes
+  dnf:
+    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    state: present
+
+- name: Add RPM Fusion nonfree repo
+  become: yes
+  dnf:
+    name: "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    state: present
+
+- name: Add RPM Fusion tainted repos
+  become: yes
+  dnf:
+    name:
+      - rpmfusion-free-release-tainted
+      - rpmfusion-nonfree-release-tainted
+
+- name: Add VSCodium repo
+  become: yes
+  copy:
+    dest: /etc/yum.repos.d/vscodium.repo
+    content: |
+      [gitlab.com_paulcarroty_vscodium_repo]
+      name=gitlab.com_paulcarroty_vscodium_repo
+      baseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/
+      enabled=1
+      gpgcheck=1
+      repo_gpgcheck=1
+      gpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+      metadata_expire=1h
+
