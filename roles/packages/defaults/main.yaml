@@ -17,6 +17,7 @@ dnf_package:
   - java-latest-openjdk-devel
   - java-latest-openjdk-javadoc
   - java-latest-openjdk-src
+  - keepassxc
   - libdvdcss
   - libreoffice
   - langpacks-en
@@ -47,3 +48,9 @@ kde_package:
 
 remove:
   - cura-lulzbot
+
+flatpak:
+  - com.github.tchx84.Flatseal
+  - com.microsoft.Teams
+  - com.skype.Client
+

@@ -22,6 +22,11 @@
     dest: /etc/yum.repos.d/
   when: "'plasma-desktop' in ansible_facts.packages" 
 
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
 - name: Install DNF packages
   become: yes
   dnf:
@@ -41,3 +46,19 @@
     name: "{{ remove }}"
     state: absent
     autoremove: yes
+
+- name: Add the flathub flatpak repo
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Install flatpak packages
+  flatpak:
+    name: "{{ flatpak }}"
+    state: present
+    method: user
+
+- name: Install Joplin
+  shell: wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
