@@ -1,0 +1,3 @@
+---
+- name: Set zsh as default shell
+  user: name={{ lookup('env', 'USER') }} shell=/usr/bin/zsh

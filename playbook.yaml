@@ -2,5 +2,6 @@
 - hosts: localhost
   connection: local
   roles:
-    - dnf-config
-    - packages
+    #- dnf-config
+    #- packages
+    - configuration
