@@ -23,6 +23,7 @@
   when: "'plasma-desktop' in ansible_facts.packages" 
 
 - name: Upgrade all packages
+  become: yes
   dnf:
     name: "*"
     state: latest
@@ -58,7 +59,6 @@
   flatpak:
     name: "{{ flatpak }}"
     state: present
-    method: user
 
 - name: Install Joplin
   shell: wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash

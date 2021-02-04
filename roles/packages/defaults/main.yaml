@@ -10,6 +10,7 @@ dnf_package:
   - clamav
   - clamav-unofficial-sigs
   - codium
+  - '@Development tools'
   - elisa-player
   - ffmpeg
   - "*-firmware"
@@ -50,7 +51,7 @@ remove:
   - cura-lulzbot
 
 flatpak:
-  - com.github.tchx84.Flatseal
+  # - com.github.tchx84.Flatseal
   - com.microsoft.Teams
   - com.skype.Client
 
