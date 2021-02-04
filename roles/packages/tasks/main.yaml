@@ -11,7 +11,7 @@
   become: yes
   shell: dnf groupupdate sound-and-video -y
 
-- name: "Check if KDE Plasma is installed"
+- name: Check if KDE Plasma is installed
   package_facts:
     manager: "auto"
 
@@ -20,17 +20,24 @@
   get_url:
     url: https://download.opensuse.org/repositories/home:/simper:/kup/Fedora_Rawhide/home:simper:kup.repo
     dest: /etc/yum.repos.d/
-  when: "'plasma-desktop' in ansible_facts.packages"
-
-- name: Attempt to install kup
-  become: yes
-  dnf:
-    name: kup.x86_64
-    state: present
-  ignore_errors: yes 
+  when: "'plasma-desktop' in ansible_facts.packages" 
 
 - name: Install DNF packages
   become: yes
   dnf:
     name: "{{ dnf_package }}"
     state: present
+
+- name: Attempt to install KDE packages
+  become: yes
+  dnf:
+    name: "{{ kde_package }}"
+    state: present
+  when: "'plasma-desktop' in ansible_facts.packages"
+
+- name: Remove packages
+  become: yes
+  dnf:
+    name: "{{ remove }}"
+    state: absent
+    autoremove: yes

@@ -17,7 +17,6 @@ dnf_package:
   - java-latest-openjdk-devel
   - java-latest-openjdk-javadoc
   - java-latest-openjdk-src
-  - kate 
   - libdvdcss
   - libreoffice
   - langpacks-en
@@ -30,6 +29,7 @@ dnf_package:
   - python3
   - qbittorrent
   - qemu
+  - rsync
   - speedtest-cli
   - steam
   - telegram-desktop
@@ -40,3 +40,10 @@ dnf_package:
   - youtube-dl
   - zsh
   - zsh-syntax-highlighting
+
+kde_package:
+  - kate
+  - kup.x86_64
+
+remove:
+  - cura-lulzbot
