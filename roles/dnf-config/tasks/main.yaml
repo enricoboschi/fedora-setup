@@ -6,7 +6,8 @@
     line: "{{ item.0 }}"
     regexp: "{{ item.1 }}"
     state: present
-  loop: "{{ dnf_conf|zip(dnf_conf_regexp)|list }}"
+  # loop so that the ith element of the 1st list is paired with the ith element of the 2nd one
+  loop: "{{ dnf_conf|zip(dnf_conf_regexp)|list }}" 
 
 - name: Add RPM Fusion free repo
   become: yes
@@ -41,3 +42,8 @@
       gpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
       metadata_expire=1h
 
+- name: Do not reload DNF cache when searching for packages
+  become: yes
+  shell: dnf alias add search="\search -C"
+  args:
+    warn: false

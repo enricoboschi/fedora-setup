@@ -1,10 +1,12 @@
 ---
 dnf_conf:
-  - fastestmirror=true
+  - fastestmirror=True
   - max_parallel_downloads=15
-  - deltarpm=false
+  - deltarpm=False
+  - install_weak_deps=False
 
 dnf_conf_regexp:
   - '^fastestmirror='
   - '^max_parallel_downloads='
   - '^deltarpm='
+  - '^install_weak_deps='
