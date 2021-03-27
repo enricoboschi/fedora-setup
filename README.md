@@ -6,3 +6,7 @@ It's also a nice Ansible exercise.
 Simply run:
     
     ./startup
+
+## TODO
+- dotfiles
+- probably more configuration

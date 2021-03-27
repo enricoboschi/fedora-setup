@@ -34,7 +34,6 @@ dnf_package:
   - rsync
   - speedtest-cli
   - steam
-  - telegram-desktop
   - texlive-scheme-basic
   - unrar
   - wine
@@ -54,4 +53,5 @@ flatpak:
   # - com.github.tchx84.Flatseal
   - com.microsoft.Teams
   - com.skype.Client
+  - org.telegram.desktop
 
